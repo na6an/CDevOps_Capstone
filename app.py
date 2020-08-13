@@ -13,7 +13,7 @@ import cv2
 import os
 import errno
 import glob
-get_ipython().run_line_magic('matplotlib', 'inline')
+#get_ipython().run_line_magic('matplotlib', 'inline')
 
 ### IF Running from Colab. ###
 #from google.colab import drive
