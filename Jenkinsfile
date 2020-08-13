@@ -14,9 +14,9 @@ pipeline {
               }
          }
 
-         stage('Dev Test') {
+         stage('master branch as prod, known to work') {
             when {
-                branch 'dev' 
+                branch 'master' 
                 }
               steps {
                   withAWS(region:'us-east-2') {
@@ -26,9 +26,9 @@ pipeline {
               }
          }
 
-        stage('Prod, upload given') {
+        stage('Dev') {
             when {
-                branch 'prod'
+                branch 'dev'
             }                
               steps {
                   withAWS(region:'us-east-2') {
