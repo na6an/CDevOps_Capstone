@@ -10,15 +10,15 @@ pipeline {
          }
          stage('Lint Python App') {
               steps {
-              	make install
+                  sudo make install
                   sh 'pylint --disable=C,E app.py'
               }
          }
 
          stage('master branch as prod, known to work') {
             when {
-                branch 'master' 
-                }
+                  branch 'master' 
+              }
               steps {
                   withAWS(region:'us-east-2') {
             		  s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', includePathPattern:'**/*', bucket:'nathan-udacity-pipeline')
@@ -30,7 +30,7 @@ pipeline {
         stage('Dev') {
             when {
                 branch 'dev'
-            }                
+              }                
               steps {
                   withAWS(region:'us-east-2') {
                   sh 'echo "Uploading original html file to S3"'
