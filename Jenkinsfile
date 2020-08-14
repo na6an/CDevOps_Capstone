@@ -10,6 +10,7 @@ pipeline {
          }
          stage('Lint Python App') {
               steps {
+              	make install
                   sh 'pylint --disable=C,E app.py'
               }
          }
