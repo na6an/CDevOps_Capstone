@@ -10,7 +10,7 @@ pipeline {
          }
          stage('Lint Python App') {
               steps {
-                  sh 'apt-get -y install pylint'
+                  sh 'sudo apt-get -y install pylint'
                   sh 'pylint --disable=C,E app.py'
               }
          }
