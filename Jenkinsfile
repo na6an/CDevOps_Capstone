@@ -11,7 +11,7 @@ pipeline {
          stage('Lint Python App') {
               steps {
                   //whersh 'sudo -S apt-get -y install pylint'
-                  sh 'easy_install pip'
+                  sh 'python /usr/lib/python2.7/dist-packages/easy_install.py pip'
                   sh 'pip install pylint'
                   sh 'pylint --disable=C,E app.py'
               }
