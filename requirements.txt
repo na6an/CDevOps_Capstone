@@ -10,7 +10,6 @@ Cython
 pandas
 python-dateutil==2.8.0
 pytz==2019.3
-scikit-learn==0.20.3
 scipy
 six==1.12.0
 Werkzeug==0.16.0
