@@ -12,7 +12,7 @@ pipeline {
               steps {
                   //whersh 'sudo -S apt-get -y install pylint'
                   sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
-                  sh 'sudo su -'
+                  sh 'sudo -su jenkins'
                   sh 'apt install python3-distutils'
                   sh 'exit'
                   sh 'python3 get-pip.py'
