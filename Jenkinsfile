@@ -6,7 +6,7 @@ pipeline {
                  sh './run_docker.sh'
                  sh 'echo "Docker setup done"'
                  sh 'docker ps'
-                 sh "./add_jenkins.sh"
+                 //sh "./add_jenkins.sh"
              }
          }
 
