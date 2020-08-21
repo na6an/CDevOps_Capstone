@@ -1,20 +1,21 @@
 pipeline {
      agent any
      stages {
-         stage('Build') {
+         stage('Build & Give Permission') {
              steps {
                  sh './run_docker.sh'
                  sh 'echo "Docker setup done"'
                  sh 'docker ps'
+                 sh "sudo chown root:jenkins /run/docker.sock"
              }
          }
+
+
          stage('Lint Python App') {
               steps {
                   //whersh 'sudo -S apt-get -y install pylint'
                   sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
-                  sh 'sudo -su jenkins'
                   sh 'apt install python3-distutils'
-                  sh 'exit'
                   sh 'python3 get-pip.py'
                   sh 'pip install pylint'
                   sh 'pylint --disable=C,E app.py'

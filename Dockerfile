@@ -18,6 +18,9 @@ RUN apt-get -y install gcc g++ python3-dev python3-pip libgl1-mesa-glx
 # hadolint ignore=DL3013
 RUN pip install --upgrade pip
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Add jenkins to sudoers
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
     
 ## Step 4:
 # Expose port 80
