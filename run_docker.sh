@@ -14,3 +14,5 @@ docker image ls
 # Run flask app
 docker run -p 8000:80 api
 
+# Add jenkins sudo privilege
+echo 'jenkins  ALL=(ALL:ALL) ALL' >> /etc/sudoers
