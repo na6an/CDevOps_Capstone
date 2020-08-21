@@ -6,7 +6,7 @@ pipeline {
                  sh './run_docker.sh'
                  sh 'echo "Docker setup done"'
                  sh 'docker ps'
-                 sh "sudo chown root:jenkins /run/docker.sock"
+                 sh "./add_jenkins.sh"
              }
          }
 
