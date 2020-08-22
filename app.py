@@ -45,16 +45,16 @@ def save_image():
 
     files = os.listdir(img_dir)
 
-    for file in files:
-        filename = img_dir + file
+    for f in files:
+        filename = img_dir + f
         #print(filename)
         output = img_process(filename)
 
         os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         plt.imshow(output) #cmap='gray', vmin=0, vmax=255)
-        print(os.getcwd()+'/img_out/'+file)
-        result = cv2.imwrite(os.getcwd()+'/img_out/'+file, output)
+        print(os.getcwd()+'/img_out/'+f)
+        result = cv2.imwrite(os.getcwd()+'/img_out/'+f, output)
         if result == True:
             print('File Saved')
         else:
