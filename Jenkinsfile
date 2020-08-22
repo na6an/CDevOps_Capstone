@@ -13,11 +13,11 @@ pipeline {
 
          stage('Lint Python App') {
               steps {
-                  //whersh 'sudo -S apt-get -y install pylint'
-                  sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
-                  sh 'sudo apt install python3-distutils'
-                  sh 'python3 get-pip.py'
-                  sh 'pip install pylint'
+                  sh 'sudo apt-get -y install pylint'
+                  //sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
+                  //sh 'python3 get-pip.py'
+                  //sh 'pip install python3-distutils'
+                  //sh 'pip install pylint'
                   sh 'pylint --disable=C,E app.py'
               }
          }
