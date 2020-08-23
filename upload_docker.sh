@@ -10,7 +10,7 @@ dockerpath=na6an/api
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
-docker tag a8d543ae30ec $dockerpath
+docker tag a8c368762361 $dockerpath
 
 # Step 3:
 # Push image to a docker repository
