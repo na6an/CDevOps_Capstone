@@ -29,7 +29,9 @@ pipeline {
               steps {
                   withAWS(region:'us-east-2') {
             		  s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', includePathPattern:'**/*', bucket:'nathan-udacity-capstone')
-            		  sh 'python3 app.py'
+            		  sh 'sudo apt-get -y python3-opencv'
+                  sh 'sudo apt-get -y matplotlib'
+                  sh 'python3 app.py'
             			}
               }
          }
