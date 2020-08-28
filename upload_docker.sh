@@ -5,12 +5,12 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath=na6an/api
+dockerpath=na6an/cv-app
 
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
-docker tag a8c368762361 $dockerpath
+docker tag 722aa99e25bf $dockerpath
 
 # Step 3:
 # Push image to a docker repository

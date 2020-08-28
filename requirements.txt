@@ -1,5 +1,5 @@
 numpy
-python3-opencv
+opencv-python
 matplotlib
 Click==7.0
 Flask==1.0.2
