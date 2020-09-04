@@ -1,0 +1,215 @@
+
+    4  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+    5  sudo chmod 666 /var/run/docker.sock
+   15  which pylint
+   16  pip show -f pylint
+   17  whereis pylint
+   29  cd usr
+   30  cd local
+   31  cd bin
+   38  sudo usermod -a -G docker jenkins
+
+   43  exit
+   44  sudo chmod 666 /var/run/docker.sock
+   45  jenkins ALL=(ALL) NOPASSWD: /var/lib/jenkins/wrapper_script
+
+   50  sudo chmod 666 /var/run/docker.sock
+   51  sudo echo 'jenkins  ALL=(ALL:ALL) ALL' >> /etc/sudoers
+   52  sudo jenkins  ALL=(ALL:ALL) ALL >> /etc/sudoers
+   53  sudo 'jenkins  ALL=(ALL:ALL) ALL' >> /etc/sudoers
+   54  sudo echo 'jenkins  ALL=(ALL:ALL) ALL' >> /etc/sudoers
+   55  sudo su
+   56  sudo chmod 666 /var/run/docker.sock
+   57  sudo visudo
+   58  usermod -a -G group Jenkins
+
+   65  sudo chmod 666 /var/run/docker.sock
+   66  curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+   67  sudo mv /tmp/eksctl /usr/local/bin
+   68  eksctl
+   69  aws --version
+   70  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   71  unzip awscliv2.zip
+   72  sudo apt install unzip
+   73  unzip awscliv2.zip
+   74  sudo ./aws/install
+   75  aws --version
+   76  aws configure
+   77  aws eks list-clusters
+
+   84  grep -E --color 'vmx|svm' /proc/cpuinfo
+   85  sysctl -a | grep machdep.cpu.features
+   86  sudo sysctl -a | grep machdep.cpu.features
+   87  egrep -c '(vmx|svm)' /proc/cpuinfo
+   88  exit
+   89  sudo chmod 666 /var/run/docker.sock
+   90  cat /sys/hypervisor/properties/capabilities
+
+   95  egrep -c ' lm ' /proc/cpuinfo
+   96  ubuntu --version
+   97  --version
+   98  sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+   99  sudo adduser `id -un` kvm
+  100  sudo adduser `id -un` libvirt
+  101  virsh list --all
+  102  sudo ls -la /var/run/libvirt/libvirt-sock
+  103  ls -l /dev/kvm
+  104  exit
+  105  ls -l /dev/kvm
+  106  sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+  107  rmmod kvm
+  108  modprobe -a kvm
+  109  sudo adduser `id -un` kvm
+  110  sysctl -a | grep machdep.cpu.features
+  111  sudo sysctl -a | grep machdep.cpu.features
+  112  curl -LO https://storage.googleapis.com/kubernetes-release/release/$\(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt\)/bin/darwin/amd64/kubectl
+  113  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt\)/bin/darwin/amd64/kubectl
+  114  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
+  115  chmod +x ./kubectl
+  116  sudo mv ./kubectl /usr/local/bin/kubectl
+  117  kubectl version --client
+  118  sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2
+  119  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  120  echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+  121  sudo apt-get update
+  122  sudo apt-get install -y kubectl
+  123  kubectl version --client
+
+  128  aws --version
+  129  kubectl version -client
+  130  kubectl version --client
+  131  export RELEASE=1.17.0
+  132  kubectl version --client
+  133  kubectl version
+  134  curl -LO https://storage.googleapis.com/kubernetes-release/release/v$RELEASE/bin/linux/amd64/kubectl
+  135  kubectl version
+  136  kubectl version --client
+
+  140  sudo mv ./kubectl /usr/lobal/bin/kubectl
+  141  sudo cp -r ./kubectl /usr/lobal/bin/kubectl
+
+  143  sudo cp -r ./kubectl /usr/local/bin/kubectl
+  144  kubectl version
+  145  kubectl version --client
+  146  eksctl create cluster --name nathan-devops-capstone --nodes-min=2
+  147  kubectl get all
+
+  163  kubectl get pods
+  164  docker ps -a
+  165  kubectl get nodes
+  166  docker stack deploy --namespace cv-app --compose-file ./stack.yml mystack
+  167  docker stack deploy --compose-file ./stack.yml mystack
+  168  docker stack deploy --compose-file ./stack.yaml mystack
+  169  sudo nano stack.yaml 
+  170  docker stack deploy --compose-file ./stack.yaml mystack
+  171  kubectl create deployment cv-app-kube --image=hub.docker.com/repository/docker/na6an/api
+  172  kubectl get nodes
+  173  kubectl get deployments
+
+  180  kubectl apply -f ./stack.yaml
+  181  sudo nano stack.yaml 
+  182  kubectl apply -f ./stack.yaml --validate=false
+  183  sudo nano stack.yaml 
+  184  mv stack.yaml ./app
+
+  188  kubectl apply -f ./stack.yaml --validate=false
+  189  sudo nano stack.yaml 
+  190  curl http://localhost:8001/version
+  191  curl http://localhost:8000/version
+  192  curl http://localhost:8080/version
+  193  export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+  194  echo Name of the Pod: $POD_NAME
+  195  kubectl get deployments
+  196  sudo nano stack.yaml 
+  197  mv stack.yaml stack.yml
+  199  kubectl apply -f ./stack.yml
+  200  sudo nano stack.yaml 
+  201  sudo nano stack.yml 
+  202  kubectl --kubeconfig ./kube.config get pods
+  203  kubectl --kubeconfig ./stack.yml get pods
+  205  kubectl get po,deployment,rc,rs,ds,no,job -o yaml
+  207  sudo nano stack.yml 
+  208  touch stack.yaml
+  209  sudo nano stack.yaml 
+  210  kubectl apply -f ./stack.yaml
+  211  kubectl apply
+  212  kubectl apply pod/cv-app-kube-85b894f9b4-ph6m
+  213  kubectl apply -k pod/cv-app-kube-85b894f9b4-ph6m
+  218  kubectl create --save-config
+  219  kubectl create --save-config -k -o config.yaml
+  220  kubectl create --save-config -k -o yaml
+  221  kubectl create --save-config -o yaml
+  223  kubectl create -h
+  224  kubectl create -f config.yaml
+  225  kubectl create -f ./stack.yaml
+  226  kubectl create -f ./stack1.yaml
+  228  kubectl create -f ./stack1.yaml
+  229  kubectl apply -f ./stack.yaml
+  230  kubectl get deployments
+  231  export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+  232  echo Name of the Pod: $POD_NAME
+  233  kubectl replace
+  234  kubectl replace -f
+  235  kubectl replace -f ./stack.yaml
+  236  sudo nano stack.yaml 
+  237  kubectl create deployment cv-app --image=cv-app
+  238  kubectl get deployments
+  239  kubectl describe deploymenet cv-app
+  240  kubectl describe deployment cv-app
+  241  kubectl get events
+  242  kubectl get deployment cv-app -o yaml
+  243  sudo nano stack.yaml 
+  244  sudo nano cv-app.yaml 
+  245  kubectl delete deployment cv-app-kube
+  246  kubectl get deployment
+  247  kubectl delete cv-app
+  248  kubectl delete deployment cv-app
+  249  kubectl create -f cv-app.yaml
+  250  kubectl get deployment
+  251  kubectl get po,deployment -o yaml > cv-app.yaml
+  252  sudo kubectl get po,deployment -o yaml > cv-app.yaml
+  253  sudo kubectl get po,deployment -o yaml > cv-app1.yaml
+  254  kubectl delete deployment cv-app
+  255  kubectl create -f cv-app1.yaml
+  257  kubectl get deployment
+  258  docker stack deploy --namespace cv-app --compose-file ./cv-app1.yaml mystack
+  259  docker stack deploy
+  260  docker stack deploy cv-app
+  262  sudo nano run_kubernetes.sh 
+  263  ./run_kubernetes.sh 
+  264  kubectl delete deployment all
+  265* kubectl delete deployment
+  267  kubectl get deployment
+  268  sudo nano run_kubernetes.sh 
+  269  kubectl delete deployment api
+  270  kubectl delete deployment cv-app
+  271  ./run_kubernetes.sh 
+  273  kubectl get pod
+  274  touch ./run_app.sh
+  275  sudo nano run_app.sh
+  276  sudo nano run_kubernetes.sh 
+  277  sudo nano run_app.sh
+  278  ./run_app.sh
+  279  chmod +x ./run_app.sh
+  280  ./run_app.sh
+  281  pip install python-opencv
+  282  sudo apt install python-pip
+  283  pip install python-opencv
+  284  pip3 install python-opencv
+  285  sudo apt install python3-pip
+  286  pip3 install python-opencv
+  287  pip3 install opencv-python
+  288  ./run_app.sh
+  289  pip3 install opencv-python
+  290  curl https://files.pythonhosted.org/packages/77/f5/49f034f8d109efcf9b7e98fbc051878b83b2f02a1c73f92bbd37f317288e/opencv-python-4.4.0.42.tar.gz
+  291  curl https://files.pythonhosted.org/packages/77/f5/49f034f8d109efcf9b7e98fbc051878b83b2f02a1c73f92bbd37f317288e/opencv-python-4.4.0.42.tar.gz -o ~/opencv.tar.gz
+  294  pip3 install --no-binary :all: opencv-python
+  295  sudo pip install --upgrade pip
+  296  pip install opencv-python
+  297  pip install opencv-python --no-cache-dir
+  298  pip3 install opencv-python --no-cache-dir
+  299  pip3 install scikit-build
+  300  pip3 install opencv-python --no-cache-dir
+  301  sudo apt-get install cmake
+  302  pip3 install opencv-python --no-cache-dir
+
