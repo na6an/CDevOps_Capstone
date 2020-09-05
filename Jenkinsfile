@@ -51,6 +51,13 @@ pipeline {
                   sh 'chmod +x ./kubectl'
                   sh 'sudo mv ./kubectl /usr/local/bin/kubectl'
                   sh 'kubectl version --client'
+                  sh 'sudo apt install unzip'
+                  sh 'curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"'
+                  sh 'unzip awscli-bundle.zip'
+                  sh 'sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws'
+                  sh 'sudo apt  install awscli'
+                  sh 'aws --version'
+
                   sh 'curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator'
                   sh 'chmod +x ./aws-iam-authenticator'
                   sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin'
