@@ -52,7 +52,7 @@ pipeline {
                   sh 'sudo mv ./kubectl /usr/local/bin/kubectl'
                   sh 'kubectl version --client'
                   sh 'sudo apt install unzip'
-                  sh 'sudo apt  install awscli'
+                  sh 'sudo apt install -y awscli'
                   //sh 'curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"'
                   //sh 'unzip awscli-bundle.zip'
                   //sh 'sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws'
