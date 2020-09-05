@@ -23,7 +23,6 @@ pipeline {
          }
 
 
-/*
          stage('master branch as dev') {
             when {
                   branch 'master' 
@@ -31,7 +30,7 @@ pipeline {
               steps {
                   //withAWS(region:'us-east-2') {
             		  //s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', includePathPattern:'**/
-                  /*', bucket:'nathan-udacity-capstone')
+                  //', bucket:'nathan-udacity-capstone')
                   sh 'export AWS_CREDENTIAL_PROFILES_FILE=~/.aws/credentials'
                   sh './run_docker.sh'
                   //sh './upload_docker.sh'
@@ -60,6 +59,7 @@ pipeline {
                   //}
               }
          }
-*/
+
+
      }
 }
