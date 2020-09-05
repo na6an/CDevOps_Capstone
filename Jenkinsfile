@@ -50,10 +50,11 @@ pipeline {
                   sh 'chmod +x ./kubectl'
                   sh 'sudo mv ./kubectl /usr/local/bin/kubectl'
                   sh 'kubectl version --client'
-                  sh 'kubectl create cluster -f cluster.yaml'
+                  sh 'eksctl create cluster -f cluster.yaml'
                   sh 'kubectl create secret docker-registry regcred --docker-server="ttps://index.docker.io/v1/"  --docker-username=${username} --docker-password=${password} --docker-email=${email}'
                   sh 'kubectl apply -f stack.yaml'
                   sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
+                  sh 'eksctl delete nathan-udacity-cluster'
 
                   //s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', file:'index.html', bucket:'nathan-udacity-pipeline')
                   //}
