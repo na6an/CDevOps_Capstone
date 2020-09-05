@@ -44,16 +44,16 @@ pipeline {
               }                
               steps {
                   //withAWS(region:'us-east-2') {
-                  sh 'url --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp' 
+                  sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp' 
                   sh 'sudo mv /tmp/eksctl /usr/local/bin'
-                  sh 'url -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"'
-                  sh 'hmod +x ./kubectl'
-                  sh 'udo mv ./kubectl /usr/local/bin/kubectl'
-                  sh 'ubectl version --client'
+                  sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"'
+                  sh 'chmod +x ./kubectl'
+                  sh 'sudo mv ./kubectl /usr/local/bin/kubectl'
+                  sh 'kubectl version --client'
                   sh 'ksctl create cluster -f cluster.yaml'
-                  sh 'ubectl create secret docker-registry regcred --docker-server="ttps://index.docker.io/v1/"  --docker-username=${username} --docker-password=${password} --docker-email=${email}'
+                  sh 'kubectl create secret docker-registry regcred --docker-server="ttps://index.docker.io/v1/"  --docker-username=${username} --docker-password=${password} --docker-email=${email}'
                   sh 'kubectl apply -f stack.yaml'
-                  sh 'ubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
+                  sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
 
                   //s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', file:'index.html', bucket:'nathan-udacity-pipeline')
                   //}
