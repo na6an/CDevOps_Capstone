@@ -43,4 +43,4 @@ spec:
     image: na6an/cv-app:latest 
     command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
   imagePullSecrets:
-  - name: regcred
+  - name: myregistrykey
