@@ -44,6 +44,7 @@ pipeline {
               }                
               steps {
                   //withAWS(region:'us-east-2') {
+                  sh 'curl https://nathan-udacity-capstone.s3.us-east-2.amazonaws.com/secret_registry.yaml'
                   sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp' 
                   sh 'sudo mv /tmp/eksctl /usr/local/bin'
                   sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"'
