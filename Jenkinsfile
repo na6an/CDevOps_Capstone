@@ -32,7 +32,7 @@ pipeline {
                   sh 'export AWS_CREDENTIAL_PROFILES_FILE=~/.aws/credentials'
                   sh './run_docker.sh'
                   //sh './upload_docker.sh'
-            			}
+            			//}
               }
          }
 
@@ -54,8 +54,8 @@ pipeline {
                   sh 'ubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
 
                   //s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', file:'index.html', bucket:'nathan-udacity-pipeline')
-                  }
+                  //}
               }
          }
-     //}
+     }
 }
