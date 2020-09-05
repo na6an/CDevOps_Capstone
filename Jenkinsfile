@@ -58,19 +58,24 @@ pipeline {
                   //sh 'sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws'
                   sh 'aws --version'
 
-                  sh 'curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator'
-                  sh 'chmod +x ./aws-iam-authenticator'
-                  sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin'
-                  sh 'echo "export PATH=$PATH:$HOME/bin" >> ~/.bashrc'
+                  //sh 'curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator'
+                  //sh 'chmod +x ./aws-iam-authenticator'
+                  //sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin'
+                  //sh 'echo "export PATH=$PATH:$HOME/bin" >> ~/.bashrc'
                   sh 'eksctl create cluster -f cluster.yaml'
-                  sh 'kubectl apply -f secret_registry.yaml'
-                  //sh 'kubectl create secret docker-registry regcred --docker-server="ttps://index.docker.io/v1/"  --docker-username=${username} --docker-password=${password} --docker-email=${email}'
-                  sh 'kubectl apply -f stack.yaml'
-                  sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
-                  sh 'eksctl delete nathan-udacity-cluster'
+                  sh 'ls'
 
                   //s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', file:'index.html', bucket:'nathan-udacity-pipeline')
                   //}
+              }
+              steps{
+                  catchError {
+                    sh 'kubectl apply -f secret_registry.yaml'
+                    //sh 'kubectl create secret docker-registry regcred --docker-server="ttps://index.docker.io/v1/"  --docker-username=${username} --docker-password=${password} --docker-email=${email}'
+                    sh 'kubectl apply -f stack.yaml'
+                  }
+                  sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
+                  sh 'eksctl delete nathan-udacity-cluster'
               }
          }
 
