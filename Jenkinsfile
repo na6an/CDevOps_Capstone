@@ -65,24 +65,29 @@ pipeline {
                   //sh 'echo "export PATH=$PATH:$HOME/bin" >> ~/.bashrc'
                   sh 'eksctl create cluster -f cluster.yaml'
                   sh 'ls'
-
+                  catchError {
+                    sh 'kubectl apply -f stack.yaml'
+                  }
                   //s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', file:'index.html', bucket:'nathan-udacity-pipeline')
                   //}
               }
             }
           }
 
-        stage('deployment2'){
+        stage('delete cluster and stacks'){
               steps{
-                  catchError {
-                    sh 'kubectl apply -f secret_registry.yaml'
+                  //catchError {
+                  //  sh 'kubectl apply -f secret_registry.yaml'
                     //sh 'kubectl create secret docker-registry regcred --docker-server="ttps://index.docker.io/v1/"  --docker-username=${username} --docker-password=${password} --docker-email=${email}'
-                  }
-                  catchError {
-                    sh 'kubectl apply -f stack.yaml'
-                  }
+                  //}
                   sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
+                  catchError {
                   sh 'eksctl delete cluster nathan-udacity-cluster'
+                  }
+                  sh 'kubectl config list-clusters'
+                  sh 'kubectl config delete cluster nathan-udacity-cluster'
+                  sh 'aws cloudformation wait delete-stack-complete --stack-name eksctl-nathan-udacity-cluster-nodegroup-ng-1 --region=us-east-2'
+                  sh 'aws cloudformation delete-stack --stack-name eksctl-nathan-udacity-cluster-cluster --region=us-east-2'
               }
          }
 
