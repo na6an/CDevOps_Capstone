@@ -82,10 +82,9 @@ pipeline {
                   //}
                   sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
                   catchError {
-                  sh 'eksctl delete cluster nathan-udacity-cluster'
+                  sh 'eksctl delete cluster -f cluster.yaml'
                   }
-                  sh 'kubectl config list-clusters'
-                  sh 'kubectl config delete cluster nathan-udacity-cluster'
+                  sh 'kubectl config delete-cluster nathan-udacity-cluster'
                   sh 'aws cloudformation wait delete-stack-complete --stack-name eksctl-nathan-udacity-cluster-nodegroup-ng-1 --region=us-east-2'
                   sh 'aws cloudformation delete-stack --stack-name eksctl-nathan-udacity-cluster-cluster --region=us-east-2'
               }
