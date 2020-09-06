@@ -43,7 +43,8 @@ pipeline {
                 branch 'deploy'
               }                
               steps {
-                  //withAWS(region:'us-east-2') {
+                  withAWS(region:'us-east-2') {
+                  s3Download(file:'secret_registry.yaml', bucket:'nathan-udacity-capstone')
                   sh 'curl https://nathan-udacity-capstone.s3.us-east-2.amazonaws.com/secret_registry.yaml'
                   sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp' 
                   sh 'sudo mv /tmp/eksctl /usr/local/bin'
@@ -75,10 +76,12 @@ pipeline {
                   catchError {
                     sh 'kubectl apply -f secret_registry.yaml'
                     //sh 'kubectl create secret docker-registry regcred --docker-server="ttps://index.docker.io/v1/"  --docker-username=${username} --docker-password=${password} --docker-email=${email}'
+                  }
+                  catchError {
                     sh 'kubectl apply -f stack.yaml'
                   }
                   sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
-                  sh 'eksctl delete nathan-udacity-cluster'
+                  sh 'eksctl delete cluster nathan-udacity-cluster'
               }
          }
 
