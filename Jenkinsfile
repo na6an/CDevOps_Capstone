@@ -70,6 +70,7 @@ pipeline {
                   //}
               }
             }
+          }
 
         stage('deployment2'){
               steps{
