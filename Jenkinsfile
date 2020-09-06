@@ -80,13 +80,13 @@ pipeline {
                   //  sh 'kubectl apply -f secret_registry.yaml'
                     //sh 'kubectl create secret docker-registry regcred --docker-server="ttps://index.docker.io/v1/"  --docker-username=${username} --docker-password=${password} --docker-email=${email}'
                   //}
-                  sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'
                   catchError {
+                  sh 'kubectl delete daemonsets,replicasets,services,deployments,pods,rc,secrets --all'                  
                   sh 'eksctl delete cluster -f cluster.yaml'
-                  }
                   sh 'kubectl config delete-cluster nathan-udacity-cluster'
                   sh 'aws cloudformation wait delete-stack-complete --stack-name eksctl-nathan-udacity-cluster-nodegroup-ng-1 --region=us-east-2'
                   sh 'aws cloudformation delete-stack --stack-name eksctl-nathan-udacity-cluster-cluster --region=us-east-2'
+                }
               }
          }
 
