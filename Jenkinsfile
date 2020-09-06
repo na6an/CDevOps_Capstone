@@ -68,6 +68,9 @@ pipeline {
                   //s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, path:'P5_Capstone/', file:'index.html', bucket:'nathan-udacity-pipeline')
                   //}
               }
+            }
+
+        stage('deployment2'){
               steps{
                   catchError {
                     sh 'kubectl apply -f secret_registry.yaml'
